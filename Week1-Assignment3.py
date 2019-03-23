@@ -1,5 +1,7 @@
 import nltk
+import re
 
+# Describe the class of strings matched by the following regular expressions.
 print("Regular Expression Validator")
 print("**************************************************************************")
 print("[a-zA-Z]+")
@@ -43,3 +45,26 @@ print("-1. One or more times: Match '\w'")
 print("-2. One or more times: Match '[^\w\s]'")
 print("Example : ")
 nltk.re_show(r'\w+|[^\w\s]+', 'roshan.ramanan@gmail.com')
+print("#######################################################################################")
+print("Create Regular Expression# 1")
+print("**************************************************************************")
+###
+### Write regular expressions to match the following classes of strings:
+###    1. A single determiner (assume that a, an, and the are the only determiners).
+###    2. An arithmetic expression using integers, addition, and multiplication,
+###       such as 2*3+8.
+###
+print("Get a sample word list")
+wordlist = [w for w in nltk.corpus.words.words('en') if w.islower()]
+print(wordlist)
+[w for w in wordlist if re.search(r'^(an?|the)$', w)]
+['a', 'an', 'the']
+
+### Arithmetic
+
+nltk.re_show(r'8', ' I can\'t do 2*8+4 in my head')
+nltk.re_show(r'[\d+*]+', ' I can\'t do 2*8+4 in my head')
+nltk.re_show(r'[\d+*-/]+', ' I can\'t do 2*8+4 in my head')
+
+print("The matching text Regular Expression for item 1: '\b([Aa][Nn]?|[Tt][Hh][Ee])\b'")
+print("Arhithamatic : '([\d+*][\d+*-/]+)")
